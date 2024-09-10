@@ -4,6 +4,10 @@ import { products } from './products';
 const prisma = new PrismaClient();
 
 async function main() {
+
+  const productsCount = await prisma.product.count();
+
+  if(productsCount === 0) {
   for (const product of products) {
     await prisma.product.create({
         data: {
@@ -14,11 +18,13 @@ async function main() {
             thumbnail: product.thumbnail,
             stock: product.stock,
           },
-    });
+    }); 
+  }} else {
+    console.log('Products already seeded');
   }
 }
 
-main()
+main() 
   .then(async () => {
     await prisma.$disconnect();
   })
