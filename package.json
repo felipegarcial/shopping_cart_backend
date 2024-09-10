@@ -9,7 +9,8 @@
     "dev:watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node -r tsconfig-paths/register src/app.ts'",
     "prisma:seed": "ts-node ./src/prisma/seeds/index.ts",
     "prisma:migrate": "npx prisma migrate dev",
-    "prisma:generate": "npx prisma generate"
+    "prisma:generate": "npx prisma generate",
+    "app:container": "npm run prisma:generate && npm run prisma:migrate && npm run prisma:seed && npm run dev"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,44 @@
+services:
+
+  dev_db_shopping_cart:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - dev_db_shopping_cart_data:/var/lib/mysql
+    networks:
+      - dev_network_shopping_cart
+
+  dev_app_shopping_cart:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src        
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json 
+    ports:
+      - "3000:3000"   
+    expose:
+      - "3000"      
+    environment:
+      - PORT=3000
+      - DATABASE_URL=mysql://root:@dev_db_shopping_cart:3306/shopping_cart
+    depends_on:
+      - dev_db_shopping_cart
+    networks:
+      - dev_network_shopping_cart
+    command: npm run app:container  
+
+networks:
+  dev_network_shopping_cart:
+    driver: bridge
+
+volumes:
+  dev_db_shopping_cart_data:
