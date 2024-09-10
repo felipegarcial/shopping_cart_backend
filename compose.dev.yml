@@ -34,7 +34,7 @@ services:
       - dev_db_shopping_cart
     networks:
       - dev_network_shopping_cart
-    command: npm run app:container  
+    command: npm run dev
 
 networks:
   dev_network_shopping_cart:
