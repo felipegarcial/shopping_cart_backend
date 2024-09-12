@@ -47,7 +47,7 @@ npm run docker:dev-seed
 ```
 
 ### 6. Use API
-Once the project is running you can check the API documentation at[text](http://localhost:3000/api-docs/), you can use swagger aplication or any cliente like postman.
+Once the project is running you can check the API documentation at [http://localhost:3000/api-docs/](http://localhost:3000/api-docs/), you can use swagger aplication or any cliente like postman.
 
 ![alt text](image.png)
 ![alt text](image-1.png)
