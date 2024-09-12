@@ -13,7 +13,9 @@
     "docker:dev-down": "docker-compose -f compose.dev.yml down",
     "docker:dev-up": "docker-compose -f compose.dev.yml up -d",
     "docker:dev-up-attached": "docker-compose -f compose.dev.yml up",
-    "docker:dev-stop": "docker-compose -f compose.dev.yml stop"
+    "docker:dev-stop": "docker-compose -f compose.dev.yml stop",
+    "docker:dev-migrate": "docker-compose -f compose.dev.yml exec dev_app_shopping_cart npm run prisma:migrate",
+    "docker:dev-seed": "docker-compose -f compose.dev.yml exec dev_app_shopping_cart npm run prisma:seed"
   },
   "keywords": [],
   "author": "",
